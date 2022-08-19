@@ -104,7 +104,7 @@ std::string MSWindowsClipboardAnyTextConverter::convertLinefeedToWin32(const std
     // copy string, converting newlines
     n = (UInt32)src.size();
     for (const char* scan = src.c_str(); n > 0; ++scan, --n) {
-        if (scan[0] == '\n') {
+        if (scan[0] == '\n' && dst.back() != '\r') {
             dst += '\r';
         }
         dst += scan[0];
